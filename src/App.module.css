@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  background: var(--gray-700);
+  height: 20rem;
+}
+
+.header img {
+  height: 3.2rem;
+}
+
+.header strong {
+  font-size: 4rem;
+  color: var(--blue-300);
+}
+
+.header strong + strong {
+  color: var(--purple-500);
+}
+
+.createTask {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.createTask input {
+  width: 63.8rem;
+  height: 5.4rem;
+  border-radius: 5px;
+  background: var(--gray-500);
+  outline: 2px solid var(--gray-700);
+}
