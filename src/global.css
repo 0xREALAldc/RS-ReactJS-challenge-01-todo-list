@@ -1,0 +1,57 @@
+:root {
+  --white: #ffffff;
+  
+  --purple-300: #8284F1;
+  --purple-500; #5E60CE;
+  
+  --blue-300: #4EA8DE;
+  --blue-500: #1E6F9F;
+
+  --red-300: #E25858;
+
+  --gray-100: #F2F2F2;
+  --gray-200: D9D9D9;
+  --gray-300: #808080;
+  --gray-400: #333333;
+  --gray-500: #262626;
+  --gray-600: #1A1A1A;
+  --gray-700: #0D0D0D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /* 
+    this one line below means that properties like 'margin, padding, border of the element never grow it's width and heigth, but 
+    to make it squeeze the element inside his borders, to keep the component the declared size
+  */
+  box-sizing: border-box;
+}
+
+/* to facilitate the use of REM metric unit, then I know that 0.1 REM is 1px */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: var(--gray-600);
+  color: var(--gray-300);
+  /* 
+    this line below here lets the fonts that we use more smooth, because we're not going to use fonts that are 
+    default for the systems, it helps to let them with a better visual
+  */
+  -webkit-font-smoothing: antialiased; 
+}
+
+body, input, textarea, button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  /* a note about using 'rem' 
+      '1rem' means that we're using ONE metric unit relative to the default font size for html, that is 16px 
+      this means the size of font will be relative to the device, and allows to if people have theis devices configured to 
+      increase/decrease the font size to still do this in your website. 
+   */
+  font-size: 1.6rem; 
+}
