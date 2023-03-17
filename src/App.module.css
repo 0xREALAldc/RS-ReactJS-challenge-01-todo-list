@@ -20,16 +20,103 @@
   color: var(--purple-500);
 }
 
-.createTask {
+.taskForm {
   display: flex;
   justify-content: center;
   gap: 0.8rem;
+  height: 5.4rem;
+  /* here we use calc() to calculate the exact margin top that we need to leave for our element get fixed inside our cover image, where we take 
+  half of the value of the height (-2.6rem) and half the sum of the 'border' and 'outline' values (6px is half of the sum that is 12px) */
+  margin-top: calc(0px - 2.7rem); 
 }
 
-.createTask input {
+.taskForm input {
   width: 63.8rem;
   height: 5.4rem;
   border-radius: 5px;
   background: var(--gray-500);
-  outline: 2px solid var(--gray-700);
+  border: 0;
+  padding: 1.6rem;
+}
+
+.taskForm input:focus {
+  outline: 1px solid var(--purple-500);
+}
+
+.taskForm button[type=submit] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--blue-500);
+  border-radius: 8px;
+  padding: 1.6rem;
+  width: 9rem;
+  height: 100%;  
+  border: 0;
+  color: var(--white);
+  font-weight: bold;
+
+  /* gap between the Text and Icon */
+  gap: 0.5rem;
+
+  /* this line is to let more smooth the change of colors for the HOVER below */
+  transition: color 0.1s, background-color 0.1s;
+}
+
+.taskForm button[type=submit]:hover {
+  background: var(--blue-300);
+}
+
+.taskForm button[type=submit]:focus {
+  outline: 1px solid var(--blue-500);
+}
+
+.taskList {
+  margin: 3.2rem auto;
+  max-width: 73.6rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.taskListInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+
+.taskListInfo p {
+  color: var(--blue-500);
+  font-weight: 900;
+}
+
+.taskListInfo span {
+  background: var(--gray-400);
+  color: var(--white);
+  width: 2.5rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.taskListInfo span::before {
+  content: "";
+  padding: 0 0.3rem;
+}
+
+.taskListInfo span::after {
+  content: "";
+  padding: 0 0.3rem;
+}
+
+.taskListItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  border-top: 1px solid var(--gray-400);
+  padding-top: 6.4rem;
 }
