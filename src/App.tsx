@@ -1,11 +1,15 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import {ChangeEvent, 
+        FormEvent, 
+        InvalidEvent, 
+        useState,
+        useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-
-import { PlusCircle, 
-  ClipboardText, 
-  Trash,
-  Circle,
-  CheckCircle } from '@phosphor-icons/react'
+import {PlusCircle, 
+        ClipboardText, 
+        Trash,
+        Circle,
+        CheckCircle } from '@phosphor-icons/react'
   
 import rocketLogo from './assets/rocket.svg'
   
@@ -44,12 +48,13 @@ const tasks1: Task[] = [
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTaskText, setNewTaskText] = useState('')
+  const [finishedTasks, setFinishedTasks] = useState(0)
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
 
     const newTask: Task = {
-      id: 'asdhasu6',
+      id: uuidv4(),
       content: newTaskText,
       isFinished: false
     }
@@ -59,8 +64,46 @@ export function App() {
   }
 
   function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('')
     setNewTaskText(event.target.value)
   }
+
+  function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('Please fill in the task')
+  }
+
+  function deleteTask(id: string) {
+    const newTasksList = tasks.filter(task => {
+      if (task.id !== id){
+        return task
+      }
+    })
+
+    setTasks(newTasksList)
+  }
+
+  function checkTask(id: string) {
+    const newTaskList = tasks.filter(task => {
+      if (task.id === id) {
+        task.isFinished = !task.isFinished
+        return task
+      }
+      else {
+        return task
+      }
+    })
+
+    setTasks(newTaskList)
+  }
+
+  useEffect(() => {
+    const finishedCount = tasks.filter(({ isFinished }) => isFinished)
+      .reduce<number>((sum: number, task) => {
+        return sum + 1
+      }, 0)
+
+    setFinishedTasks(finishedCount)
+  }, [tasks])
 
   return (
     <div>
@@ -78,6 +121,8 @@ export function App() {
           placeholder="Add a new task"
           value={newTaskText}
           onChange={handleNewTaskChange}
+          onInvalid={handleNewTaskInvalid}
+          required
         />
       
         <button type="submit">
@@ -89,7 +134,7 @@ export function App() {
       <main className={styles.taskList}>
         <div className={styles.taskListInfo}>
           <p>Tasks created <span>{tasks.length}</span></p>
-          <p>Finished <span>0</span></p>
+          <p>Finished <span>{finishedTasks} of {tasks.length}</span></p>
         </div>
 
         { tasks.length === 0 
@@ -106,11 +151,11 @@ export function App() {
             { tasks.map(task => {
               return (
                 <div className={styles.task} key={task.id}>
-                  <button>
+                  <button onClick={() => checkTask(task.id)}>
                     {task.isFinished ? <CheckCircle size={24} /> : <Circle size={24} /> }
                   </button>
                   <p>{task.content}</p>
-                  <button>
+                  <button onClick={() => deleteTask(task.id)}>
                     <Trash size={24}/>
                   </button>
                 </div>
