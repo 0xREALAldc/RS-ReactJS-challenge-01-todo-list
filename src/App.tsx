@@ -56,7 +56,7 @@ export function App() {
     const newTask: Task = {
       id: uuidv4(),
       content: newTaskText,
-      isFinished: true
+      isFinished: false
     }
 
     setTasks([...tasks, newTask])
@@ -80,6 +80,20 @@ export function App() {
     })
 
     setTasks(newTasksList)
+  }
+
+  function checkTask(id: string) {
+    const newTaskList = tasks.filter(task => {
+      if (task.id === id) {
+        task.isFinished = !task.isFinished
+        return task
+      }
+      else {
+        return task
+      }
+    })
+
+    setTasks(newTaskList)
   }
 
   useEffect(() => {
@@ -137,7 +151,7 @@ export function App() {
             { tasks.map(task => {
               return (
                 <div className={styles.task} key={task.id}>
-                  <button>
+                  <button onClick={() => checkTask(task.id)}>
                     {task.isFinished ? <CheckCircle size={24} /> : <Circle size={24} /> }
                   </button>
                   <p>{task.content}</p>
