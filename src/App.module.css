@@ -37,6 +37,7 @@
   background: var(--gray-500);
   border: 0;
   padding: 1.6rem;
+  color: var(--gray-300);
 }
 
 .taskForm input:focus {
@@ -56,6 +57,7 @@
   border: 0;
   color: var(--white);
   font-weight: bold;
+  font-size: 1.4rem;
 
   /* gap between the Text and Icon */
   gap: 0.5rem;
@@ -89,6 +91,11 @@
 .taskListInfo p {
   color: var(--blue-500);
   font-weight: 900;
+  font-size: 1.4rem;
+}
+
+.taskListInfo p + p {
+  color: var(--purple-300);
 }
 
 .taskListInfo span {
@@ -98,16 +105,17 @@
   height: 1.9rem;
   border-radius: 999px;
   font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .taskListInfo span::before {
   content: "";
-  padding: 0 0.3rem;
+  padding: 0 0.4rem;
 }
 
 .taskListInfo span::after {
   content: "";
-  padding: 0 0.3rem;
+  padding: 0 0.4rem;
 }
 
 .taskListItems {
@@ -116,7 +124,50 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-
+  padding-top: 2.4rem;
   border-top: 1px solid var(--gray-400);
-  padding-top: 6.4rem;
+}
+
+.taskListItemsEmpty {
+  padding-top: 6.4rem; 
+}
+
+.task {
+  width: 100%;
+  height: 7.2rem;
+  display: flex;
+  align-items: flex-start;
+
+  padding: 1.5rem 1.5rem;
+  line-height: 1.9rem;
+  
+  border: 1px solid var(--gray-500);
+  background: var(--gray-400);
+  border-radius: 8px;
+}
+
+.task + .task {
+  margin-top: 1.2rem;
+}
+
+.task button {
+  line-height: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+  background: transparent;
+  color: var(--blue-500);
+  border: 0;
+  border-radius: 100px;
+}
+
+.task p + button {
+  color: var(--gray-300);
+}
+
+.task p {
+  display: flex;
+  color: var(--gray-100);
+  width: 63.2rem;
+  padding: 0rem 1.2rem;
+  font-size: 1.4rem;
 }
