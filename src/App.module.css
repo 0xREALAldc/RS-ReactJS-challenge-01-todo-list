@@ -160,6 +160,10 @@
   border-radius: 100px;
 }
 
+.task button:hover {
+  color: var(--blue-300);
+}
+
 .task p + button {
   color: var(--gray-300);
 }
