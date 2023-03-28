@@ -154,7 +154,7 @@ export function App() {
                   <button onClick={() => checkTask(task.id)}>
                     {task.isFinished ? <CheckCircle size={24} /> : <Circle size={24} /> }
                   </button>
-                  <p>{task.content}</p>
+                  <p className={ task.isFinished ? styles.taskContentFinished : ''}>{task.content}</p>
                   <button onClick={() => deleteTask(task.id)}>
                     <Trash size={24}/>
                   </button>

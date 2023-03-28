@@ -42,6 +42,7 @@
 
 .taskForm input:focus {
   outline: 1px solid var(--purple-500);
+  color: var(--white);
 }
 
 .taskForm button[type=submit] {
@@ -178,4 +179,9 @@
   width: 63.2rem;
   padding: 0rem 1.2rem;
   font-size: 1.4rem;
+}
+
+.task .taskContentFinished {
+  text-decoration: line-through;
+  color: var(--gray-300);
 }
