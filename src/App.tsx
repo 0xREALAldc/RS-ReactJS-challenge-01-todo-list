@@ -10,8 +10,8 @@ import {PlusCircle,
         Trash,
         Circle,
         CheckCircle } from '@phosphor-icons/react'
-  
-import rocketLogo from './assets/rocket.svg'
+
+import { Header } from './Header'
   
 import styles from './App.module.css'
 import './global.css'
@@ -84,13 +84,7 @@ export function App() {
 
   return (
     <div>
-      <header className={styles.header}>
-        <img src={rocketLogo} />
-        <div>
-          <strong>to</strong>
-          <strong>do</strong>
-        </div>
-      </header>
+      <Header />
 
       <form className={styles.taskForm} onSubmit={handleCreateNewTask}>
         <input 
