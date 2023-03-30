@@ -10,8 +10,8 @@ import {PlusCircle,
         Trash,
         Circle,
         CheckCircle } from '@phosphor-icons/react'
-  
-import rocketLogo from './assets/rocket.svg'
+
+import { Header } from './Header'
   
 import styles from './App.module.css'
 import './global.css'
@@ -21,29 +21,6 @@ interface Task {
   isFinished: boolean;
   content: string;
 }
-
-const tasks1: Task[] = [
-  {
-    id: 'adadasd1',
-    isFinished: false,
-    content: 'Get the groceries at the supermarket'
-  },
-  {
-    id: 'adadasd2',
-    isFinished: false,
-    content: 'Get a present for my girlfriend'
-  },
-  {
-    id: 'adadasd3',
-    isFinished: true,
-    content: 'Study for 3 hours today'
-  },
-  {
-    id: 'adadasd4',
-    isFinished: false,
-    content: 'Meditate 15 minutes'
-  },
-];
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -107,13 +84,7 @@ export function App() {
 
   return (
     <div>
-      <header className={styles.header}>
-        <img src={rocketLogo} />
-        <div>
-          <strong>to</strong>
-          <strong>do</strong>
-        </div>
-      </header>
+      <Header />
 
       <form className={styles.taskForm} onSubmit={handleCreateNewTask}>
         <input 
