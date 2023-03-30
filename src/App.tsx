@@ -22,29 +22,6 @@ interface Task {
   content: string;
 }
 
-const tasks1: Task[] = [
-  {
-    id: 'adadasd1',
-    isFinished: false,
-    content: 'Get the groceries at the supermarket'
-  },
-  {
-    id: 'adadasd2',
-    isFinished: false,
-    content: 'Get a present for my girlfriend'
-  },
-  {
-    id: 'adadasd3',
-    isFinished: true,
-    content: 'Study for 3 hours today'
-  },
-  {
-    id: 'adadasd4',
-    isFinished: false,
-    content: 'Meditate 15 minutes'
-  },
-];
-
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTaskText, setNewTaskText] = useState('')
