@@ -7,15 +7,13 @@ import {
   
 import { 
   PlusCircle,
-  ClipboardText, 
-  Trash,
-  Circle,
-  CheckCircle } from '@phosphor-icons/react';
+  ClipboardText } from '@phosphor-icons/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './TaskList.module.css'
+import { TaskItem } from './TaskItem';
 
-interface Task {
+export interface Task {
   id: string;
   isFinished: boolean;
   content: string;
@@ -118,15 +116,12 @@ export function TaskList () {
           <div className={styles.taskListItems}>
             { tasks.map(task => {
               return (
-                <div className={styles.task} key={task.id}>
-                  <button onClick={() => checkTask(task.id)}>
-                    {task.isFinished ? <CheckCircle size={24} /> : <Circle size={24} /> }
-                  </button>
-                  <p className={ task.isFinished ? styles.taskContentFinished : ''}>{task.content}</p>
-                  <button onClick={() => deleteTask(task.id)}>
-                    <Trash size={24}/>
-                  </button>
-                </div>
+                <TaskItem 
+                  key={task.id}
+                  {...task}
+                  onCheckTask={checkTask}
+                  onDeleteTask={deleteTask}
+                />
               )
             })}
           </div>
